@@ -4,6 +4,5 @@ from typing import Union
 @dataclass
 class Node:
     parent: Union['Node', None] = field(default=None)
-    tokens: list[set] = field(default_factory=list)
-    childs: list['Node'] = field(default_factory=list)
-
+    tokens: list[str] = field(default_factory=list)
+    children: list['Node'] = field(default_factory=list)
