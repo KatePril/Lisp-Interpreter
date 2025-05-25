@@ -49,5 +49,5 @@ def tokenize(source: str) -> Node:
         elif part == ')':
             current = current.parent
         else:
-            current.tokens.append(part)
+            current.tokens.append(_get_value(part))
     return root.children[0]
