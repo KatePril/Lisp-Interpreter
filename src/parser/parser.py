@@ -25,6 +25,15 @@ def _to_parts(source: str) -> Generator[str, None, None]:
             stack.pop()
             yield ')'
 
+def _get_value(token):
+    try:
+        return int(token)
+    except ValueError:
+        try:
+            return float(token)
+        except ValueError:
+            return token
+
 def tokenize(source: str) -> Node:
     """
     This method tokenizes the Lisp code
@@ -40,5 +49,5 @@ def tokenize(source: str) -> Node:
         elif part == ')':
             current = current.parent
         else:
-            current.tokens.append(part)
+            current.tokens.append(_get_value(part))
     return root.children[0]

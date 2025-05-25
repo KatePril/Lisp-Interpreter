@@ -1,4 +1,6 @@
-"""This module provides code for"""
+"""
+This module provides code for testing parser
+"""
 import unittest
 from src.parser.parser import tokenize
 
@@ -44,11 +46,11 @@ class TestParser(unittest.TestCase):
         self.assertEqual(len(node.children[0].children[0].children), 2)
         self.assertEqual(
             node.children[0].children[0].children[0].tokens,
-            ["x", "25"]
+            ['x', 25]
         )
         self.assertEqual(
             node.children[0].children[0].children[1].tokens,
-            ["y", "30"]
+            ['y', 30]
         )
 
         self.assertEqual(len(node.children[1].children), 1)
@@ -70,12 +72,12 @@ class TestParser(unittest.TestCase):
         self.assertEqual(len(node.children[0].children[0].children), 1)
         self.assertEqual(
             node.children[0].children[0].children[0].tokens,
-            ['sum', '0']
+            ['sum', 0]
         )
 
         self.assertEqual(
             node.children[1].tokens,
-            ['loop', 'for', 'i', 'from', '1', 'to', '10', 'do']
+            ['loop', 'for', 'i', 'from', 1, 'to', 10, 'do']
         )
         self.assertEqual(len(node.children[1].children), 1)
         self.assertEqual(
@@ -90,8 +92,6 @@ class TestParser(unittest.TestCase):
 
         self.assertEqual(len(node.children[2].children), 0)
         self.assertEqual(node.children[2].tokens, ["print", "sum"])
-
-
 
 
 if __name__ == '__main__':
