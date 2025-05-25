@@ -1,3 +1,7 @@
+"""
+This module contains Context class
+"""
+
 class Context(dict):
     """
     Context with variables and functions definitions.
@@ -10,7 +14,7 @@ class Context(dict):
         :param args: variables definitions
         :param parent_context: the link to the parent context
         """
-        super(Context, self).__init__()
+        super().__init__()
         self.update(zip(params, args))
         self.parent_context = parent_context
 
