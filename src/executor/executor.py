@@ -2,7 +2,7 @@ from src.parser.node import Node
 from src.executor.operations.operators import global_context
 
 def _evaluate(node: Node, context=global_context):
-
+    # pylint: disable=R0911,R1710
     if not node.tokens and not node.children:
         return None
 

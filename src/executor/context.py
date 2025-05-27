@@ -26,7 +26,6 @@ class Context(dict):
         """
         if name in self:
             return self
-        elif self.parent_context:
+        if self.parent_context:
             return self.parent_context.find(name)
-        else:
-            raise NameError(f"Undefined variable: {name}")
+        raise NameError(f"Undefined variable: {name}")
