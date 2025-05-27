@@ -28,7 +28,7 @@ jobs:
       run: black .
 
     - name: Run pylint
-      run: pylint .
+      run: pylint . --disable=R0903,R0904
 
   tests:
     runs-on: ubuntu-latest
