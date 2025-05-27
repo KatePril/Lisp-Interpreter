@@ -1,3 +1,6 @@
+"""
+This module provides code for executing Lisp code
+"""
 from src.parser.node import Node
 from src.executor.operations.operators import global_context
 
@@ -39,6 +42,13 @@ def _evaluate(node: Node, context=global_context):
         return result
 
 def execute_node_iterative(root: Node, context=global_context):
+    """
+    This function iterates over nodes and executes them.
+
+    :param root: Root node of the code
+    :param context: Context of the code
+    :return:
+    """
     result = None
     for child in root.children:
         result = _evaluate(child, context)
