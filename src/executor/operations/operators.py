@@ -103,12 +103,9 @@ def lisp_if(node: Node, context: Context, evaluate: Callable) -> Any:
     if_context = Context(parent_context=context)
     results = []
     if condition:
-        for child in node.children[1:2] if len(node.children) > 1 else []:
+        for child in node.children[1:]:
             results.append(evaluate(child, if_context))
-    elif len(node.children) > 2:
-        for child in node.children[2:]:
-            results.append(evaluate(child, if_context))
-    return results[-1] if results else None
+    return results if results else None
 
 
 def lisp_not(value: Any) -> bool:
@@ -147,7 +144,7 @@ def execute_setf(node: Node, context: Context, evaluate: Callable) -> None:
     context[variable] = evaluate(node.children[0], context)
 
 
-def execute_loop(node: Node, context: Context, evaluate: Callable) -> None:
+def execute_loop(node: Node, context: Context, evaluate: Callable) -> list[Any]:
     """
     Execute a loop with start, stop, and optional step.
     Handles multiline instructions by evaluating all children in the loop body.
