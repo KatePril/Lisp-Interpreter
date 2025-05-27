@@ -1,9 +1,15 @@
+"""
+This module provides code for testing operations
+"""
 import unittest
 import sys
 from io import StringIO
 from src.executor.operations import operators
 
 class TestArithmeticOperations(unittest.TestCase):
+    """
+    This class tests if operations works correctly
+    """
     def test_add_basic(self):
         """
         Test addition with multiple positive integers.
@@ -180,4 +186,7 @@ class TestArithmeticOperations(unittest.TestCase):
         self.assertEqual(result, {"x": 42, "y": 99})
 
 if __name__ == '__main__':
+    """
+    Launching tests
+    """
     unittest.main()
