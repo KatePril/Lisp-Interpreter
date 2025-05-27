@@ -24,4 +24,9 @@ class Context(dict):
         :param name: variable name
         :return:
         """
-        return self if name in self.keys() else self.parent_context.find(name)
+        if name in self:
+            return self
+        elif self.parent_context:
+            return self.parent_context.find(name)
+        else:
+            raise NameError(f"Undefined variable: {name}")

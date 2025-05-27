@@ -168,6 +168,7 @@ KEYWORDS = {
     "div": div,
     "mod": lisp_mod,
     "print": lisp_print,
+    "write": lisp_print,
     "=": equal,
     ">": is_more,
     "<": is_less,
