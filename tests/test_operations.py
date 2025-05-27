@@ -179,6 +179,9 @@ class TestArithmeticOperations(unittest.TestCase):
         Expects a dictionary with variable names and values.
         """
         class DummyNode:
+            """
+            TestClass
+            """
             def __init__(self, tokens):
                 self.tokens = tokens
         nodes = [DummyNode(["x", 42]), DummyNode(["y", 99])]
@@ -186,7 +189,4 @@ class TestArithmeticOperations(unittest.TestCase):
         self.assertEqual(result, {"x": 42, "y": 99})
 
 if __name__ == '__main__':
-    """
-    Launching tests
-    """
     unittest.main()
