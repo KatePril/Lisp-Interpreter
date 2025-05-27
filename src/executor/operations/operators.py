@@ -105,7 +105,7 @@ def lisp_if(node: Node, context: Context, evaluate: Callable) -> Any:
     if condition:
         for child in node.children[1:]:
             results.append(evaluate(child, if_context))
-    return results if results else None
+    return results[-1] if results else None
 
 
 def lisp_not(value: Any) -> bool:
@@ -154,11 +154,10 @@ def execute_loop(node: Node, context: Context, evaluate: Callable) -> list[Any]:
     step = int(node.tokens[8]) if len(node.tokens) >= 9 else 1
     results = []
     for i in range(start, stop, step):
-        context.update({node.tokens[2]: i})
-        loop_context = Context(parent_context=context)
+        context[node.tokens[2]] = i
         for child in node.children:
-            results.append(evaluate(child, loop_context))
-    return results
+            results.append(evaluate(child, context))
+    return results[-1] if results else None
 
 
 KEYWORDS = {
