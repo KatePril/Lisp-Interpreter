@@ -19,3 +19,6 @@ Check the code quality with pylint:
 ```shell
 pylint .
 ```
+
+# Design document
+You can view project's design document via this [link](https://docs.google.com/document/d/1JULpK4EN_U73SPXFw8ChSVo6U2CWoWCcrolT3m9N4X8/edit?usp=sharing)
