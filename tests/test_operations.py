@@ -69,21 +69,21 @@ class TestArithmeticOperations(unittest.TestCase):
         sys.stdout = captured_output
         operators.KEYWORDS["print"]("hello", 123)
         sys.stdout = sys.__stdout__
-        self.assertEqual(captured_output.getvalue(), "hello 123 ")
+        self.assertEqual(captured_output.getvalue(), "\nhello 123 ")
     
     def test_is_equal(self):
         """
         Test equality operation with all equal arguments.
         Expects True for (2, 2, 2, 2).
         """
-        self.assertEqual(operators.KEYWORDS["=="](2, 2, 2, 2), True)
+        self.assertEqual(operators.KEYWORDS["="](2, 2, 2, 2), True)
         
     def test_is_unequal(self):
         """
         Test equality operation with unequal arguments.
         Expects False for (2, 2, 2, 2, 5).
         """
-        self.assertEqual(operators.KEYWORDS["=="](2, 2, 2, 2, 5), False)
+        self.assertEqual(operators.KEYWORDS["="](2, 2, 2, 2, 5), False)
 
     def test_mul_basic(self):
         """
@@ -178,7 +178,6 @@ class TestArithmeticOperations(unittest.TestCase):
         nodes = [DummyNode(["x", 42]), DummyNode(["y", 99])]
         result = operators.KEYWORDS["let"](nodes)
         self.assertEqual(result, {"x": 42, "y": 99})
-
 
 if __name__ == '__main__':
     unittest.main()

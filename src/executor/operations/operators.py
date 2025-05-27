@@ -63,9 +63,9 @@ def lisp_print(*args: Any) -> None:
     """
     Print all arguments separated by space.
     """
+    print()
     for arg in args:
         print(arg, end=" ")
-    print()
 
 
 def equal(*args: Any) -> bool:
