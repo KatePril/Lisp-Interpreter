@@ -4,8 +4,8 @@ Module defining Lisp-style operations and control flow for a interpreter.
 
 from typing import Any, Callable, Union
 
-from src.executor import Context
-from src.parser import Node
+from src.executor.context import Context
+from src.parser.node import Node
 
 
 def add(*args: Union[int, float]) -> Union[int, float]:
