@@ -103,10 +103,7 @@ def lisp_if(node: Node, context: Context, evaluate: Callable) -> Any:
     if_context = Context(parent_context=context)
     results = []
     if condition:
-        for child in node.children[1:2] if len(node.children) > 1 else []:
-            results.append(evaluate(child, if_context))
-    elif len(node.children) > 2:
-        for child in node.children[2:]:
+        for child in node.children[1:]:
             results.append(evaluate(child, if_context))
     return results[-1] if results else None
 
@@ -147,7 +144,7 @@ def execute_setf(node: Node, context: Context, evaluate: Callable) -> None:
     context[variable] = evaluate(node.children[0], context)
 
 
-def execute_loop(node: Node, context: Context, evaluate: Callable) -> None:
+def execute_loop(node: Node, context: Context, evaluate: Callable) -> list[Any]:
     """
     Execute a loop with start, stop, and optional step.
     Handles multiline instructions by evaluating all children in the loop body.
@@ -157,11 +154,10 @@ def execute_loop(node: Node, context: Context, evaluate: Callable) -> None:
     step = int(node.tokens[8]) if len(node.tokens) >= 9 else 1
     results = []
     for i in range(start, stop, step):
-        context.update({node.tokens[2]: i})
-        loop_context = Context(parent_context=context)
+        context[node.tokens[2]] = i
         for child in node.children:
-            results.append(evaluate(child, loop_context))
-    return results
+            results.append(evaluate(child, context))
+    return results[-1] if results else None
 
 
 KEYWORDS = {
@@ -171,6 +167,7 @@ KEYWORDS = {
     "div": div,
     "mod": lisp_mod,
     "print": lisp_print,
+    "write": lisp_print,
     "=": equal,
     ">": is_more,
     "<": is_less,
@@ -181,6 +178,7 @@ KEYWORDS = {
     "and": lisp_and,
     "or": lisp_or,
     "not": lisp_not,
+    "evenp": lambda x: x % 2 == 0,
 }
 
 global_context = Context()

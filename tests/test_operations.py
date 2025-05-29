@@ -8,7 +8,7 @@ from src.executor.operations import operators
 
 class TestArithmeticOperations(unittest.TestCase):
     """
-    This class tests if operations works correctly
+    This class tests if operations work correctly
     """
     def test_add_basic(self):
         """
