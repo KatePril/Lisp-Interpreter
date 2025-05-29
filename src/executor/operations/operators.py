@@ -178,6 +178,7 @@ KEYWORDS = {
     "and": lisp_and,
     "or": lisp_or,
     "not": lisp_not,
+    "evenp": lambda x: x % 2 == 0,
 }
 
 global_context = Context()
