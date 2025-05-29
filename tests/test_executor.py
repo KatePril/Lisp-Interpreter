@@ -1,3 +1,6 @@
+"""
+This module provides code for testing executor
+"""
 import unittest
 from unittest.mock import patch
 from io import StringIO
@@ -6,7 +9,9 @@ from src.executor.executor import execute_node_iterative
 from src.parser.parser import tokenize
 
 class MyTestCase(unittest.TestCase):
-
+    """
+    This class tests if executor works correctly
+    """
     @patch('sys.stdout', new_callable=StringIO)
     def test_one(self, mock_stdout):
         """
