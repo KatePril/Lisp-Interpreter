@@ -22,7 +22,11 @@ pylint .
 
 Launch code via cli with:
 ```shell
+<<<<<<< HEAD
 python main.py <path>
+=======
+python src/reader/reader.py /home/general_maks/lisp.lsp
+>>>>>>> 122b361538bed0bb7fe0e4a35a06441b670e35a6
 ```
 
 # Design document
