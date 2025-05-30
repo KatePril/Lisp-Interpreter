@@ -14,9 +14,5 @@ def main():
         print("You did not enter your filepath.")
         return
     node = tokenize(source)
-    print(node)
     result = execute_node_iterative(node)
     print(result)
-
-if __name__ == "__main__":
-    main()
