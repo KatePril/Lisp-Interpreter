@@ -8,10 +8,12 @@ from src.executor.context import Context
 from src.parser.node import Node
 
 
-def add(*args: Union[int, float]) -> Union[int, float]:
+def add(*args: Union[int, float, str]) -> Union[int, float, str]:
     """
-    Return the sum of all arguments.
+    Return the sum of all arguments. If any argument is a string, concatenate all as strings.
     """
+    if any(isinstance(arg, str) for arg in args):
+        return ' '.join(str(arg) for arg in args)
     result = 0
     for num in args:
         result += num
