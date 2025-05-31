@@ -1,14 +1,15 @@
+"""
+CLI entry point for the Lisp interpreter.
+"""
+
 import sys
-import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 from src.parser.parser import tokenize
-from src.executor.operations.operators import global_context
 from src.executor.executor import execute_node_iterative
 
-
 def main():
+    """Read a Lisp file, tokenize, execute, and print the result."""
     if len(sys.argv) > 1:
-        with open(sys.argv[1], "r") as f:
+        with open(sys.argv[1], "r", encoding="utf-8") as f:
             source = f.read()
     else:
         print("You did not enter your filepath.")
