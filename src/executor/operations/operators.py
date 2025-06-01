@@ -135,7 +135,7 @@ def execute_let(nodes: list[Node]) -> dict:
     """
     Execute let-binding and return variable-value pairs.
     """
-    return {node.tokens[0]: node.tokens[1] for node in nodes}
+    return {node.tokens[0]: node.tokens[1][1:len(node.tokens[1])-1] if isinstance(node.tokens[1], str) else node.tokens[1] for node in nodes}
 
 
 def execute_setf(node: Node, context: Context, evaluate: Callable) -> None:
