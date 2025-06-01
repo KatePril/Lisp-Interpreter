@@ -16,8 +16,7 @@ def main():
         with open(sys.argv[1], "r", encoding="utf-8") as f:
             source = f.read()
             node = tokenize(source)
-            result = execute_node_iterative(node)
-            print(result)
+            execute_node_iterative(node)
     else:
         print("You did not enter your filepath.")
         return
